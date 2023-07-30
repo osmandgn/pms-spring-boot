@@ -1,7 +1,7 @@
 package com.enoca.pms.service;
 
 import com.enoca.pms.dto.CompanyDTO;
-import com.enoca.pms.dto.request.CompanyUpdateRequest;
+import com.enoca.pms.dto.request.CompanyRequest;
 import com.enoca.pms.exception.ConflictException;
 import com.enoca.pms.exception.ResourceNotFoundException;
 import com.enoca.pms.exception.message.ErrorMessage;
@@ -37,7 +37,8 @@ public class CompanyService {
         return companyMapper.companyToCompanyDTO(company);
     }
 
-    public CompanyDTO createCompany(Company company) {
+    public CompanyDTO createCompany(CompanyRequest companyRequest) {
+        Company company = companyMapper.CompanyDtoToCompany(companyRequest);
         companyRepository.save(company);
         return companyMapper.companyToCompanyDTO(company);
     }
@@ -55,7 +56,7 @@ public class CompanyService {
     }
 
 
-    public CompanyDTO updateCompany(Long id, CompanyUpdateRequest companyUpdateRequest) {
+    public CompanyDTO updateCompany(Long id, CompanyRequest companyUpdateRequest) {
         Company existCompany = getCompanyByID(id);
         if (!existCompany.getEmail().equals(companyUpdateRequest.getEmail()) && companyRepository.existsByEmail(companyUpdateRequest.getEmail())){
             throw new ConflictException(String.format(ErrorMessage.EMAIL_ALREADY_EXIST_MESSAGE, companyUpdateRequest.getEmail()));

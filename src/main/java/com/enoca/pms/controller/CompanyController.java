@@ -1,8 +1,7 @@
 package com.enoca.pms.controller;
 
 import com.enoca.pms.dto.CompanyDTO;
-import com.enoca.pms.dto.request.CompanyUpdateRequest;
-import com.enoca.pms.model.Company;
+import com.enoca.pms.dto.request.CompanyRequest;
 import com.enoca.pms.service.CompanyService;
 import jakarta.validation.Valid;
 import org.springframework.data.domain.Page;
@@ -52,14 +51,14 @@ public class CompanyController {
     }
 
     @PostMapping
-    public ResponseEntity<CompanyDTO> createCompany(@Valid @RequestBody Company company){
-        CompanyDTO companyDTO = companyService.createCompany(company);
+    public ResponseEntity<CompanyDTO> createCompany(@Valid @RequestBody CompanyRequest companyRequest){
+        CompanyDTO companyDTO = companyService.createCompany(companyRequest);
         return new ResponseEntity<>(companyDTO, HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<CompanyDTO> updateCompany(@PathVariable Long id,
-                                                    @Valid @RequestBody CompanyUpdateRequest companyUpdateRequest){
+                                                    @Valid @RequestBody CompanyRequest companyUpdateRequest){
         CompanyDTO companyDTO = companyService.updateCompany(id, companyUpdateRequest);
         return ResponseEntity.ok(companyDTO);
     }
