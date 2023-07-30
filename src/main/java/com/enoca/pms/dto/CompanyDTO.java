@@ -13,6 +13,4 @@ public class CompanyDTO {
     private String address;
     private String website;
     private String industry;
-    private List<Employee> employees;
-
 }

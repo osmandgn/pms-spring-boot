@@ -37,7 +37,7 @@ public class CompanyController {
         return ResponseEntity.ok(company);
     }
 
-    @GetMapping("pages")
+    @GetMapping("/pages")
     public ResponseEntity<Page<CompanyDTO>> getAllPageable(
             @RequestParam("page") int page,
             @RequestParam("size") int size,
