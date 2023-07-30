@@ -75,4 +75,10 @@ public class CompanyService {
        companyRepository.delete(company);
        return companyMapper.companyToCompanyDTO(company);
     }
+
+    public Company getCompanyByName(String companyName){
+       return companyRepository.findByName(companyName).orElseThrow(() -> new ResourceNotFoundException(
+                String.format(ErrorMessage.RESOURCE_NOT_FOUND_EXCEPTION, companyName))
+        );
+    }
 }
