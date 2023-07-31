@@ -41,7 +41,7 @@ public class EmployeeService {
     }
 
     public EmployeeDTO createEmployee(EmployeeRequest employeeRequest) {
-        Employee employee = employeeMapper.EmployeeDtoTOEmployee(employeeRequest);
+        Employee employee = employeeMapper.employeeRequestToEmployee(employeeRequest);
         employeeRepository.save(employee);
         return employeeMapper.employeeToEmployeeDTO(employee);
     }
@@ -54,7 +54,7 @@ public class EmployeeService {
         employee.setEmail(employeeRequest.getEmail());
         employee.setSalary(employeeRequest.getSalary());
         employee.setJobTitle(employeeRequest.getJobTitle());
-        employee.setFirsName(employeeRequest.getFirstName());
+        employee.setFirstName(employeeRequest.getFirstName());
         employee.setLastName(employeeRequest.getLastName());
         employee.setPhoneNumber(employeeRequest.getPhoneNumber());
 

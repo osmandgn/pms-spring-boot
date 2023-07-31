@@ -20,7 +20,7 @@ public class Employee {
     @Column(length = 50, nullable = false)
     @NotBlank(message = "First name can not be null")
     @Size(min = 2, max = 50, message = "Employee first name must be between {min} and {max} chars long")
-    private String firsName;
+    private String firstName;
 
     @Column(length = 50, nullable = false)
     @NotBlank(message = "Last name can not be null")

@@ -16,7 +16,7 @@ public interface EmployeeMapper {
     List<EmployeeDTO> employeesToDTOs(List<Employee> employees);
 
     @Mapping(target = "id", ignore = true)
-    Employee EmployeeDtoTOEmployee(EmployeeRequest employeeRequest);
+    Employee employeeRequestToEmployee(EmployeeRequest employeeRequest);
 
 
 }
